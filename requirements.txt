@@ -1,0 +1,5 @@
+pytorch=1.12.1+cu102
+torchvision=.013.1+cu102
+Pillow=9.0.1
+opencv=4.6.0
+sklearn=1.0.2
