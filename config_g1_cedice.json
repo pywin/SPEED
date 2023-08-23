@@ -1,0 +1,80 @@
+{
+    "arch": {
+        "args": {
+            "backbone": "resnet34",
+            "freeze_backbone": false,
+            "freeze_bn": false
+        },
+        "type": "GCN"
+    },
+    "ignore_index": 255,
+    "loss": "CE_DiceLoss",
+    "loss2": "DiceLoss",
+    "loss3": "CrossEntropyLoss2d",
+    "loss4": "FocalLoss",
+    "lr_scheduler": {
+        "args": {},
+        "type": "Poly"
+    },
+    "n_gpu": 1,
+    "name": "GCN",
+    "optimizer": {
+        "args": {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+        },
+        "differential_lr": true,
+        "type": "Adam"
+    },
+    "optimizer2": {
+        "args": {
+            "lr": 0.01,
+            "momentum": 0.9,
+            "weight_decay": 0.0001
+        },
+        "differential_lr": true,
+        "type": "SGD"
+    },
+    "train_loader": {
+        "args": {
+            "augment": true,
+            "base_size": false,
+            "batch_size": 1,
+            "blur": false,
+            "crop_size": false,
+            "data_dir": "/home/wayne/data/CRC",
+            "flip": true,
+            "num_workers": 8,
+            "rotate": true,
+            "scale": 1.0,
+            "shuffle": true,
+            "split": "train_g1"
+        },
+        "type": "ZHEYI"
+    },
+    "trainer": {
+        "early_stop": 40,
+        "epochs": 80,
+        "log_dir": "saved/runs",
+        "log_per_iter": 20,
+        "monitor": "max Mean_IoU",
+        "save_dir": "saved/",
+        "save_period": 5,
+        "tensorboard": true,
+        "val": true,
+        "val_per_epochs": 5
+    },
+    "use_synch_bn": false,
+    "val_loader": {
+        "args": {
+            "batch_size": 1,
+            "crop_size": false,
+            "data_dir": "/home/wayne/data/CRC",
+            "num_workers": 8,
+            "scale": 1.0,
+            "split": "test_g1",
+            "val": false
+        },
+        "type": "ZHEYI"
+    }
+}
